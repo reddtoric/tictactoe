@@ -21,6 +21,8 @@ set "player=0"
 
 
 :gameloop
+	echo.
+	echo.
 	echo  Tic Tac Toe Game
 	echo.
 	echo     1  2  3
@@ -39,7 +41,6 @@ set "player=0"
 	) else ( set "strRow1=%strRow1%[ ]")
 
 
-
 	if not %r2c1% == 0 ( set "strRow2=%strRow2%[%r2c1%]"
 	) else ( set "strRow2=%strRow2%[ ]")
 	
@@ -48,7 +49,6 @@ set "player=0"
 	
 	if not %r2c3% == 0 ( set "strRow2=%strRow2%[%r2c3%]"
 	) else ( set "strRow2=%strRow2%[ ]")
-
 
 
 	if not %r3c1% == 0 ( set "strRow3=%strRow3%[%r3c1%]"
@@ -91,7 +91,7 @@ set "player=0"
 	)
 
 
-	pause
+	::pause
 	goto :gameloop
 
 
