@@ -1,14 +1,10 @@
-# tictactoe
+# Tic Tac Toe
 
-
-## Features
-
-### Version 1:
+#### Version 1 Features:
 	- users select players
 	- simple input checking
 
-
-### Version 2:
+#### Version 2 Features:
 	- automatically switches players
 	- simple input checking
 	- valid move checking
