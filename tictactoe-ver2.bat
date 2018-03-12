@@ -108,129 +108,126 @@ set "player=1"
 
 
 :checkWin
-set "win=none"
-::check rows
-if not %r1c1% == 0 (
-	if %r1c1% == %r1c2% (
-		if %r1c2% == %r1c3% ( set "win=%r1c1%" )
+	set "win=none"
+	::check rows
+	if not %r1c1% == 0 (
+		if %r1c1% == %r1c2% (
+			if %r1c2% == %r1c3% ( set "win=%r1c1%" )
+		)
 	)
-)
-if not %r2c1% == 0 (
-	if %r2c1% == %r2c2% (
-		if %r2c2% == %r2c3% ( set "win=%r2c1%" )
+	if not %r2c1% == 0 (
+		if %r2c1% == %r2c2% (
+			if %r2c2% == %r2c3% ( set "win=%r2c1%" )
+		)
 	)
-)
-if not %r3c1% == 0 (
-	if %r3c1% == %r3c2% (
-		if %r3c2% == %r3c3% ( set "win=%r3c1%" )
+	if not %r3c1% == 0 (
+		if %r3c1% == %r3c2% (
+			if %r3c2% == %r3c3% ( set "win=%r3c1%" )
+		)
 	)
-)
-::check cols
-if not %r1c1% == 0 (
-	if %r1c1% == %r2c1% (
-		if %r2c1% == %r3c1% ( set "win=%r1c1%" )
+	::check cols
+	if not %r1c1% == 0 (
+		if %r1c1% == %r2c1% (
+			if %r2c1% == %r3c1% ( set "win=%r1c1%" )
+		)
 	)
-)
-if not %r1c2% == 0 (
-	if %r1c2% == %r2c2% (
-		if %r2c2% == %r3c2% ( set "win=%r1c2%" )
+	if not %r1c2% == 0 (
+		if %r1c2% == %r2c2% (
+			if %r2c2% == %r3c2% ( set "win=%r1c2%" )
+		)
 	)
-)
-if not %r1c3% == 0 (
-	if %r1c3% == %r2c3% (
-		if %r2c3% == %r3c3% ( set "win=%r1c3%" )
+	if not %r1c3% == 0 (
+		if %r1c3% == %r2c3% (
+			if %r2c3% == %r3c3% ( set "win=%r1c3%" )
+		)
 	)
-)
-::check diagonals
-if not %r1c1% == 0 (
-	if %r1c1% == %r2c2% (
-		if %r2c2% == %r3c3% ( set "win=%r1c1%" )
+	::check diagonals
+	if not %r1c1% == 0 (
+		if %r1c1% == %r2c2% (
+			if %r2c2% == %r3c3% ( set "win=%r1c1%" )
+		)
 	)
-)
-if not %r1c3% == 0 (
-	if %r1c3% == %r2c2% (
-		if %r2c2% == %r3c1% ( set "win=%r1c3%" )
+	if not %r1c3% == 0 (
+		if %r1c3% == %r2c2% (
+			if %r2c2% == %r3c1% ( set "win=%r1c3%" )
+		)
 	)
-)
-if %win% == O (
-	echo Player 1 wins
-	goto :endgame
-) else if %win% == X (
-	echo Player 2 wins
-	goto :endgame
-)
-goto :afterCheckWin
+	if %win% == O (
+		echo Player 1 wins
+		goto :endgame
+	) else if %win% == X (
+		echo Player 2 wins
+		goto :endgame
+	)
+	goto :afterCheckWin
 
 
 :userInput
-echo Player %player%
+	echo Player %player%
 :selectRow
-set "rowSelected=false"
-set /p row=Please enter row: 
-if %row% == 1 ( set "rowSelected=true")
-if %row% == 2 ( set "rowSelected=true")
-if %row% == 3 ( set "rowSelected=true")
-if not %rowSelected% == true (
-	goto :selectRow
-)
-goto :selectCol
+	set "rowSelected=false"
+	set /p row=Please enter row: 
+	if %row% == 1 ( set "rowSelected=true")
+	if %row% == 2 ( set "rowSelected=true")
+	if %row% == 3 ( set "rowSelected=true")
+	if not %rowSelected% == true (
+		goto :selectRow
+	)
+	goto :selectCol
 
 
 :selectCol
-set "colSelected=false"
-set /p col=Please enter col: 
-if %col% == 1 ( set "colSelected=true")
-if %col% == 2 ( set "colSelected=true")
-if %col% == 3 ( set "colSelected=true")
-if %col% == b ( goto :selectRow )
-if not %colSelected% == true (
-	goto :selectCol
-)
-goto :checkInput
+	set "colSelected=false"
+	set /p col=Please enter col: 
+	if %col% == 1 ( set "colSelected=true")
+	if %col% == 2 ( set "colSelected=true")
+	if %col% == 3 ( set "colSelected=true")
+	if %col% == b ( goto :selectRow )
+	if not %colSelected% == true (
+		goto :selectCol
+	)
+	goto :checkInput
 
 
 :switchPlayer
-if %player% == 1 ( 
-	set "player=2" 
-) else ( 
-	set "player=1"
-)
-goto :afterSwitchPlayer
+	if %player% == 1 ( set "player=2" 
+	) else ( set "player=1" )
+	goto :afterSwitchPlayer
 
 
 :checkInput
-set "inputFailed=false"
-if %row% == 1 (
-	if %col% == 1 (
-		if not %r1c1% == 0 ( set "inputFailed=true" )
-	) else if %col% == 2 (
-		if not %r1c2% == 0 ( set "inputFailed=true" )
+	set "inputFailed=false"
+	if %row% == 1 (
+		if %col% == 1 (
+			if not %r1c1% == 0 ( set "inputFailed=true" )
+		) else if %col% == 2 (
+			if not %r1c2% == 0 ( set "inputFailed=true" )
+		) else (
+			if not %r1c3% == 0 ( set "inputFailed=true" )
+		)
+	) else if %row% == 2 (
+		if %col% == 1 (
+			if not %r2c1% == 0 ( set "inputFailed=true" )
+		) else if %col% == 2 (
+			if not %r2c2% == 0 ( set "inputFailed=true" )
+		) else (
+			if not %r2c3% == 0 ( set "inputFailed=true" )
+		)
 	) else (
-		if not %r1c3% == 0 ( set "inputFailed=true" )
+		if %col% == 1 (
+			if not %r3c1% == 0 ( set "inputFailed=true" )
+		) else if %col% == 2 (
+			if not %r3c2% == 0 ( set "inputFailed=true" )
+		) else (
+			if not %r3c3% == 0 ( set "inputFailed=true" )
+		)
 	)
-) else if %row% == 2 (
-	if %col% == 1 (
-		if not %r2c1% == 0 ( set "inputFailed=true" )
-	) else if %col% == 2 (
-		if not %r2c2% == 0 ( set "inputFailed=true" )
-	) else (
-		if not %r2c3% == 0 ( set "inputFailed=true" )
+	if %inputFailed% == true (
+		echo.
+		echo Please re-enter move.
+		goto :userInput
 	)
-) else (
-	if %col% == 1 (
-		if not %r3c1% == 0 ( set "inputFailed=true" )
-	) else if %col% == 2 (
-		if not %r3c2% == 0 ( set "inputFailed=true" )
-	) else (
-		if not %r3c3% == 0 ( set "inputFailed=true" )
-	)
-)
-if %inputFailed% == true (
-	echo.
-	echo Please re-enter move.
-	goto :userInput
-)
-goto :afterUserInput
+	goto :afterUserInput
 
 
 
